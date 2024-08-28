@@ -1,0 +1,4 @@
+/trashtests/
+.mypy_cache/
+/git.sh
+Learning Tests/
