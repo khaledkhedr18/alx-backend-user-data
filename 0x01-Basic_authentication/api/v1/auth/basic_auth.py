@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 '''Basic authentication module'''
+from models.user import User
 from api.v1.auth.auth import Auth
 import base64
 from typing import Tuple, TypeVar
@@ -100,7 +101,7 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or not isinstance(user_pwd, str):
             return None
-        users = myUser.search({"email": user_email})
+        users = User.search({"email": user_email})
         if len(users) == 0:
             return None
         if not users[0].is_valid_password(user_pwd):
