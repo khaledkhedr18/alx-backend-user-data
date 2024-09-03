@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+'''Authentication Module'''
 from flask import request
 from typing import List, TypeVar
 
@@ -6,8 +7,7 @@ User = TypeVar('User')
 
 
 class Auth:
-    """
-    Auth class
+    """Auth class
     """
 
     def __init__(self) -> None:
