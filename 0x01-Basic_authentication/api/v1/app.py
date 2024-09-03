@@ -84,4 +84,3 @@ if __name__ == "__main__":
     else:
         auth = Auth()
     app.run(host=host, port=port)
-
