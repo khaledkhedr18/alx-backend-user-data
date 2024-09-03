@@ -7,9 +7,4 @@ class BasicAuth(Auth):
     """
     Basic authentication class.
     """
-
-    def __init__(self):
-        """
-        Initializes a new BasicAuth instance.
-        """
-        super().__init__()
+    pass
