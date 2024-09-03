@@ -7,7 +7,7 @@ from api.v1.views import app_views
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status() -> str:
-    """ GET /api/v1/status
+    """ GET /api/v1//status
     Return:
       - the status of the API
     """
@@ -35,3 +35,13 @@ def unauthorized_endpoint():
       - A 401 Unauthorized response.
     """
     abort(401)
+
+@app_views.route('/forbidden/', methods=['GET'], strict_slashes=False)
+def forbidden_endpoint():
+    """
+    Handles GET requests to /api/v1/forbidden.
+
+    Returns:
+      - A 403 Forbidden response.
+    """
+    abort(403)
