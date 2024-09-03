@@ -47,8 +47,6 @@ class BasicAuth(Auth):
             str: The decoded authorization header,
             or None if decoding fails.
         """
-        if base64_authorization_header is None:
-            return None
         if type(base64_authorization_header) is not str:
             return None
         try:
