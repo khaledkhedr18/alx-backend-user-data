@@ -81,6 +81,7 @@ if __name__ == "__main__":
     auth_type = getenv('AUTH_TYPE')
     if auth_type == 'basic_auth':
         auth = BasicAuth()
-    elif auth_type:
+    else:
         auth = Auth()
     app.run(host=host, port=port)
+
