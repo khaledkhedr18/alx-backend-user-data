@@ -4,6 +4,7 @@ from typing import List, TypeVar
 
 User = TypeVar('User')
 
+
 class Auth:
     """
     Auth class
