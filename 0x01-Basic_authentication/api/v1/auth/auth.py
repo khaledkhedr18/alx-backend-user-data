@@ -2,6 +2,7 @@
 '''Authentication Module'''
 from flask import request
 from typing import List, TypeVar
+import re
 
 User = TypeVar('User')
 
