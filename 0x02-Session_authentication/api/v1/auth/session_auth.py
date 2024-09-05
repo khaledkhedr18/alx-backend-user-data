@@ -2,6 +2,7 @@
 '''Session authentication module'''
 from api.v1.auth.auth import Auth
 from uuid import uuid4
+from api.v1.views.users import User
 
 
 class SessionAuth(Auth):
@@ -43,3 +44,19 @@ class SessionAuth(Auth):
         if session_id is None or not isinstance(session_id, str):
             return None
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None) -> User:
+        """
+        Retrieves the current user from the request.
+
+        Args:
+            request: The request object containing user information.
+
+        Returns:
+            User: The current user object.
+        """
+        cookie = self.session_cookie(request)
+        if cookie is None:
+            return None
+        user_id = self.user_id_for_session_id(cookie)
+        return User.get(user_id)
