@@ -5,6 +5,7 @@ from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models.user import User
 from os import getenv
+from typing import Tuple
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -57,8 +58,9 @@ def login() -> str:
     return response
 
 
-@app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
-def logout() -> str:
+@app_views.route('/auth_session/logout',
+                 methods=['DELETE'], strict_slashes=False)
+def logout() -> Tuple[str, int]:
     """Logs the user out of the session.
 
     - Destroys the user's session.
