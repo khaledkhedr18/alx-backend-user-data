@@ -72,13 +72,10 @@ class SessionAuth(Auth):
         Returns:
             bool: True if the session was deleted, False otherwise.
         """
-        if request is None:
+        session_id = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(session_id)
+        if (request is None or session_id is None) or user_id is None:
             return False
-        cookie = self.session_cookie(request)
-        if cookie is None:
-            return False
-        session_id = self.user_id_for_session_id(cookie)
-        if session_id is None:
-            return False
-        del self.user_id_by_session_id[session_id]
+        if session_id in self.user_id_by_session_id:
+            del self.user_id_by_session_id[session_id]
         return True

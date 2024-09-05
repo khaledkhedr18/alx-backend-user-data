@@ -65,7 +65,8 @@ def logout() -> str:
     - Returns a JSON response with an empty dictionary and a 200 status code.
     """
     from api.v1.app import auth
-    if auth.destroy_session(request) is False:
+    is_destroyed = auth.destroy_session(request)
+    if not is_destroyed:
         abort(404)
 
-    return jsonify({}), 200
+    return jsonify({})
